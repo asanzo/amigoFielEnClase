@@ -1,4 +1,5 @@
 import model.juguetes.*
+import model.duenios.*
 
 test "woody dice una frase de la lista" {
 	assert.that(woody.frases().contains(woody.tirarDelCordel()))
@@ -18,5 +19,11 @@ test "buzz al volar pierde la mitad de su energia" {
 test "buzz al tirar rayo aumenta la energia 20 por unidad" {
 	buzz.tirarRayo(6)
 	assert.equals(100+120, buzz.energia())
+}
+
+test "woody al jugar se desgasta y aumenta felicidad del duenio" {
+	woody.jugar(andy)
+	assert.equals(180+93, andy.felicidad())
+	assert.equals(95, woody.estadoPintura())
 }
 

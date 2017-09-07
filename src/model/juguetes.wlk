@@ -1,5 +1,7 @@
 object woody {
 	var frases = #{"hay una serpiente en mi bota", "alguien enveneno el abrevadero", "corre como el viento Tiro al Blanco"}
+	var estadoPintura = 100
+	
 	method tirarDelCordel(){
 		return frases.anyOne()
 	}
@@ -8,6 +10,24 @@ object woody {
 	}
 	method hacerseElGalan() {
 		frases.add("Cuando te miro me derretís") 
+	}
+	
+	method jugar(duenio) {
+		self.desgastar()
+		duenio.aumentarFelicidad(self.cantLetrasDeFrases())
+	}
+	method cantLetrasDeFrases() {
+		return frases.sum({frase => frase.size()}) 
+	}
+	method desgastar() {
+		if(estadoPintura >= 5) {
+			estadoPintura -= 5
+		} else {
+			self.error("Woody no da más, chabón")
+		}
+	}
+	method estadoPintura() {
+		return estadoPintura 
 	}
 }
 
@@ -22,6 +42,16 @@ object buzz {
 	method tirarRayo(cantRayos) {
 		energia = energia + cantRayos * 20
 	}
+	method jugar(duenio){
+		self.seguidillaJugar()
+		duenio.aumentarFelicidad(energia * 2)
+	}
+	method seguidillaJugar() {
+		self.volar()
+		self.tirarRayo(10)
+		self.volar()
+		self.tirarRayo(1) 
+	}
 }
 
 object rex {
@@ -34,5 +64,8 @@ object rex {
 	
 	method cambiarDeCompaniero(kumpa){
 		companiero = kumpa
+	}
+	method jugar(duenio){
+		
 	}
 }
