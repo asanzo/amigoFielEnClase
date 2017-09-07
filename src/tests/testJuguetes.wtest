@@ -1,0 +1,22 @@
+import model.juguetes.*
+
+test "woody dice una frase de la lista" {
+	assert.that(woody.frases().contains(woody.tirarDelCordel()))
+}
+
+test "woody al hacerse el galán agrega una frase amorosa" {
+	assert.notThat(woody.frases().contains("Cuando te miro me derretís"))
+	woody.hacerseElGalan()
+	assert.that(woody.frases().contains("Cuando te miro me derretís"))
+}
+
+test "buzz al volar pierde la mitad de su energia" {
+	buzz.volar()
+	assert.equals(50, buzz.energia())
+}
+
+test "buzz al tirar rayo aumenta la energia 20 por unidad" {
+	buzz.tirarRayo(6)
+	assert.equals(100+120, buzz.energia())
+}
+
