@@ -1,7 +1,7 @@
 
 object andy {
 	var juguetes = []
-	var felicidad = 180
+	var felicidad = 190
 	
 	method jugarConTodos() {
 		juguetes.forEach({ juguete => juguete.jugar(self)}) //V1
